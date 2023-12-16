@@ -1,15 +1,45 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webpage</title>
-    <head><link rel="icon" href="49baffdb2e9f842e6d0f442d03a11b9d.ico" type="image/x-icon"/></head>
-    <body>
+    <link rel="icon" href="49baffdb2e9f842e6d0f442d03a11b9d.ico" type="image/x-icon" />
+</head>
 
-<h1 style="font-family:Arial;">Hello.</h1>
+<body>
 
-<p1 style="font-family:Arial;">I made this because i was bored 👍</p1>
-<p2 style="font-family:Arial;">Maybe some people will see it,if you are seeing this...</p2>
-<a href="clicked.html"> <button style="border-radius:75px;">Click me!</button></a>
-<p style="font-family:Arial;">-Yunus :)</p>
-    </body>
+    <h1 style="font-family:Arial;">Hello.</h1>
+
+    <p1 style="font-family:Arial;">I made this because I was bored 👍</p1>
+    <p2 style="font-family:Arial;">Maybe some people will see it, if you are seeing this...</p2>
+    <a href="clicked.html"> <button style="border-radius:75px;">Click me!</button></a>
+    <p style="font-family:Arial;">-Yunus :)</p>
+
+    <script>
+        // Function to send the IP address to the server
+        function logIPAddress() {
+            fetch('log_ip.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => {
+                console.error('Error logging IP address:', error);
+            });
+        }
+
+        // Call the function when the page loads
+        logIPAddress();
+    </script>
+
+</body>
+
 </html>
