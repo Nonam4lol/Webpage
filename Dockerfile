@@ -1,21 +1,14 @@
-# Use a base image
+# Use the latest Nginx image as the base
 FROM nginx:latest
- 
-# Set environment variables
-ENV PORT=8080
- 
-# Set working directory
+
+# Set the working directory to Nginx's serve directory
 WORKDIR /usr/share/nginx/html
- 
-# Copy the index.html file to the working directory
-COPY index.html .
- 
-# Expose the specified port
-EXPOSE $PORT
- 
-# Set labels
-LABEL maintainer="Your Name <your.email@example.com>"
-LABEL description="Dockerfile for running index.html on port 8080"
- 
-# Start the nginx server
+
+# Copy the contents of the current directory to the working directory
+COPY . .
+
+# Expose the default port for Nginx
+EXPOSE 80
+
+# Start Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
